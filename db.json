@@ -1,0 +1,96 @@
+{
+  "tours": [
+    {
+      "id": 1,
+      "name": "The Forest Hiker",
+      "duration": 5,
+      "maxGroupSize": 25,
+      "difficulty": "easy",
+      "ratingsAverage": 4.7,
+      "ratingsQuantity": 37,
+      "price": 497,
+      "summary": "Breathtaking hike through the Canadian Banff National Park.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "image": "/image.png"
+      
+    },
+    {
+      "id": 2,
+      "name": "The Sea Explorer",
+      "duration": 7,
+      "maxGroupSize": 15,
+      "difficulty": "medium",
+      "ratingsAverage": 4.8,
+      "ratingsQuantity": 55,
+      "price": 799,
+      "summary": "Explore the stunning beaches and marine life.",
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "/nat-6.jpg"
+    },
+    {
+      "id": 3,
+      "name": "The Snow Adventurer",
+      "duration": 4,
+      "maxGroupSize": 10,
+      "difficulty": "hard",
+      "ratingsAverage": 4.6,
+      "ratingsQuantity": 22,
+      "price": 899,
+      "summary": "Experience extreme winter adventures in the Alps.",
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "/image copy.png"
+    },
+    {
+      "id": 4,
+      "name": "Desert Explorer",
+      "duration": 6,
+      "maxGroupSize": 20,
+      "difficulty": "medium",
+      "ratingsAverage": 4.5,
+      "ratingsQuantity": 41,
+      "price": 650,
+      "summary": "Discover vast deserts and unique landscapes.",
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "/nat-6.jpg"
+    },
+    {
+      "id": 5,
+      "name": "City Lights Tour",
+      "duration": 3,
+      "maxGroupSize": 30,
+      "difficulty": "easy",
+      "ratingsAverage": 4.3,
+      "ratingsQuantity": 18,
+      "price": 399,
+      "summary": "Explore vibrant city nightlife and attractions.",
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "/nat-8.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Island Paradise",
+      "duration": 8,
+      "maxGroupSize": 12,
+      "difficulty": "easy",
+      "ratingsAverage": 4.9,
+      "ratingsQuantity": 60,
+      "price": 1400,
+      "summary": "Relax in tropical island paradise.",
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "/nat-9.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Mountain Climber",
+      "duration": 6,
+      "maxGroupSize": 8,
+      "difficulty": "difficult",
+      "ratingsAverage": 4.7,
+      "ratingsQuantity": 33,
+      "price": 1100,
+      "summary": "Challenging mountain climbing expedition.",
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "/nat-10.jpg"
+    }
+  ]
+}

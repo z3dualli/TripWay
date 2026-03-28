@@ -1,0 +1,1 @@
+export { default as AllTours } from './ui/AllTours'
