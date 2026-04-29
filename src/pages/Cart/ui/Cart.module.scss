@@ -1,0 +1,331 @@
+.Cart {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 110px 20px 70px;
+  background: #ffffff;
+  color: #222;
+  font-family: 'Manrope', sans-serif;
+}
+
+.top {
+  text-align: center;
+  margin-bottom: 46px;
+
+  h2 {
+    margin: 0 0 6px;
+    font-size: 42px;
+    line-height: 1.1;
+    font-weight: 600;
+    color: #111;
+  }
+
+  p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #9a9a9a;
+  }
+}
+
+.headerRow {
+  margin-bottom: 14px;
+  padding: 0 14px;
+
+  :global(.ant-col) {
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 400;
+    color: #5f5f5f;
+  }
+}
+
+.itemCard {
+  border: 1px solid #eeeeee;
+  background: #fff;
+  padding: 22px 18px;
+  margin-bottom: 12px;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: #e3e3e3;
+  }
+}
+
+.itemCard :global(.ant-row) {
+  min-height: 64px;
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+}
+
+.product img {
+  width: 82px;
+  height: 82px;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
+  background: #f7f7f7;
+}
+
+.productInfo {
+  min-width: 0;
+
+}
+
+.name {
+  margin: 0 0 6px;
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: #2b2b2b;
+}
+
+.duration {
+  margin: 0 0 4px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #8f8f8f;
+}
+
+.meta {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #b2b2b2;
+}
+
+.quantity {
+  margin-left: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  border: 1px solid #d9d9d9;
+  background: #fff;
+
+  button {
+    width: 24px;
+    height: 26px;
+    border: none;
+    background: transparent;
+    padding: 0;
+    font-size: 15px;
+    line-height: 1;
+    color: #3f3f3f;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: #fafafa;
+    }
+  }
+
+  span {
+    width: 24px;
+    height: 26px;
+    border-left: 1px solid #d9d9d9;
+    border-right: 1px solid #d9d9d9;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 500;
+    color: #3f3f3f;
+  }
+}
+
+.priceCol,
+.totalCol {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #3a3a3a;
+  text-align: left;
+}
+
+.totalCol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.removeCol {
+  button {
+    width: 24px;
+    height: 20px;
+    border: none;
+    background: transparent;
+    padding: 0;
+    font-size: 15px;
+    line-height: 1;
+    color: #3f3f3f;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: #00000056;
+    }
+  }
+}
+
+.Summary {
+  margin-top: 44px;
+  font-family: 'Manrope', sans-serif !important; 
+}
+
+.SummaryCard {
+  border: 1px solid #eeeeee;
+  padding: 24px;
+  background: #fff;
+
+  h3 {
+    margin: 0 0 24px;
+    font-size: 26px;
+    font-weight: 500;
+    color: #222;
+
+      &::after {
+      margin-top: 10px;
+      content: "";
+      display:block;
+      width: 300px;
+      height: 1px;
+      background-color: #ccc;
+      margin-left: 7px;
+      }
+  }
+
+  
+}
+
+.SummaryInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+
+  span{
+    font-size: 14px;
+    color: #555;
+  }
+  img {
+    width: 30px;
+    height: 23px;
+  }
+}
+
+.delivery {
+  color: #8c8c8c;
+
+  img {
+    opacity: 1;
+    
+  }
+  
+}
+
+.pointerIcon {
+  transform: rotate(-90deg);
+}
+
+.Buybtn {
+  width: 100%;
+  height: 44px;
+  margin-top: 10px;
+  border: none;
+  background: #28b485;
+  color: #fff;
+  font-size: 19;
+  cursor: pointer;
+  font-family: 'Manrope', sans-serif; 
+  font-weight: 600;
+  transition: ease 0.2s;
+
+  &:hover {
+    background: #28b485c0;
+  }
+}
+
+.payment {
+  margin-top: 26px;
+
+  p {
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #222;
+  }
+}
+
+.paymentIcons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.paypalicon {
+  width: 90px;
+  height: 60px;
+}
+
+.wbIcon {
+  width: 160px;
+  height: 60px;
+}
+
+.kaspiIcon {
+  width: 55px;
+  height: 60px;
+}
+
+
+
+.priceCol,
+.totalCol,
+.removeCol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty {
+  margin-top: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h2 {
+    font-size: 38px;
+  }
+
+  p {
+    font-size: 19px;
+    color: #313131;
+  }
+  button {
+  width: 220px;
+  height: 44px;
+  margin-top: 20px;
+  font-size: 18px;
+  border: none;
+  background: #28b485;
+  color: #fff;
+  font-size: 17px;
+  cursor: pointer;
+  font-family: 'Manrope', sans-serif; 
+  font-weight: 600;
+  transition: ease 0.2s;
+
+  &:hover {
+    background: #28b485c0;
+  }
+}}

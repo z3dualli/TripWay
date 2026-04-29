@@ -3,6 +3,7 @@ import styles from "./MainPage.module.scss"
 import { useEffect, useState } from "react"
 import type { TourType } from "../types/type"
 import { getTours } from "../service/service"
+import { NavLink } from "react-router-dom"
 
 
 const MainPage = ()=> {
@@ -68,13 +69,14 @@ const MainPage = ()=> {
                     <div className={styles.cardBack}>
                       <p className={styles.cardOnly}>ONLY</p>
                       <h2 className={styles.cardPrice}>${tour.price}</h2>
-                      <button className={styles.cardBtn}>BOOK NOW</button>
+                      {/* <button className={styles.cardBtn}>BOOK NOW</button> */} <NavLink className={styles.cardBtn} to={'/alltours'}>BOOK NOW</NavLink>
                     </div>
                   </div>
                 </div>
               </Col>
             ))
           }
+          {/* <div className={styles.secondaryBtn} > <NavLink to={'/alltours'}>DISCOVER ALL TOURS</NavLink>  </div> */}
     </Row>
   </Col>
 )
