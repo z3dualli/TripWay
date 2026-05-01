@@ -1,4 +1,3 @@
-import Icon from "../../assets/Icon";
 import { Col, Row } from "antd";
 import styles from "./Header.module.scss";
 import { NavLink } from "react-router-dom";
@@ -14,12 +13,11 @@ const Header = () => {
 
   return (
     <Row align={"middle"} justify={"space-between"} className={styles.header}>
-      <Col span={6} className={styles.logo}>
-        <Icon />
+      <Col span={12} className={styles.logo}>
         <h1>TripWay</h1>
       </Col>
 
-      <Col span={12}>
+      <Col span={12} className={styles.right}>
         <div className={styles.nav}>
           <NavLink
             to="/"
@@ -28,43 +26,35 @@ const Header = () => {
             }
             end
           >
-            ABOUT TOURS
+            Home
           </NavLink>
-
           <NavLink
             to="/alltours"
             className={({ isActive }) =>
               isActive ? styles.active : styles.link
             }
           >
-            ALL TOURS
+            Tours
           </NavLink>
-
           <NavLink
             to="/benefits"
             className={({ isActive }) =>
               isActive ? styles.active : styles.link
             }
           >
-            YOUR BENEFITS
+            Benefits
           </NavLink>
-
           <NavLink
             to="/store"
             className={({ isActive }) =>
               isActive ? styles.active : styles.link
             }
           >
-            STORE
+            Blog
           </NavLink>
         </div>
-      </Col>
-      <Col span={6} className={styles.auth}>
-        <div className={styles.authBlock}>
-          <button className={styles.cartBut}>
-            <img src={likeIcon} alt="favorites" />
-          </button>
 
+        <div className={styles.authBlock}>
           <NavLink to={"/cart"}>
             <button className={styles.cartBut}>
               <img src={cartIcon} alt="Cart" />
@@ -75,7 +65,7 @@ const Header = () => {
           </NavLink>
 
           <NavLink to={"/login"}>
-            <button className={styles.loginBut}>LOGIN</button>
+            <button className={styles.loginBut}>Sign In</button>
           </NavLink>
         </div>
       </Col>

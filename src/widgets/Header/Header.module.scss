@@ -5,18 +5,18 @@
 }
 
 body {
-  font-family: 'Manrope', sans-serif;
+  font-family: "Manrope", sans-serif;
 }
 
 .header,
 .header * {
-  font-family: 'Manrope', sans-serif !important;
+  font-family: "Manrope", sans-serif !important;
 }
 
-.header{
+.header {
   z-index: 9999;
-  font-family: 'Manrope', sans-serif;
-  position: fixed; 
+  font-family: "Manrope", sans-serif;
+  position: fixed;
   right: 0px;
   top: 0;
   left: 0px;
@@ -27,11 +27,9 @@ body {
   padding: 0 100px;
   color: #f7f7f7;
   justify-content: center;
-  background-color: #444;
   // background-color: rgba(0, 0, 0, 0.442);
   // backdrop-filter: blur(10px);
 }
-
 
 .header :global(.ant-row) {
   height: 100%;
@@ -42,15 +40,15 @@ body {
 }
 
 .nav {
-  
+  margin-left: auto;
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 60px;
   z-index: 50;
 
-  & a{
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    gap: 50px;
+  & a {
+    text-shadow: 0 9px 12px rgb(0, 0, 0);
+    padding-bottom: 6px;
     font-size: 15px;
     position: relative;
     cursor: pointer;
@@ -58,13 +56,13 @@ body {
     color: inherit;
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
-      bottom: -4px;
+      bottom: -6px;
       width: 0;
-      height: 2px;
-      background: #87ff93bc;
+      height: 1px;
+      background: #6a9050;
       transition: width 0.3s ease;
     }
     &:hover::after {
@@ -74,6 +72,18 @@ body {
   }
 }
 
+.right {
+  gap: 80px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.nav,
+.authBlock {
+  display: flex;
+  align-items: center;
+}
 
 .logo {
   display: flex;
@@ -84,8 +94,6 @@ body {
   & h1 {
     text-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     font-weight: 400;
-
-
   }
   & svg {
     width: 40px;
@@ -131,7 +139,6 @@ body {
 }
 
 .loginBut {
-  
   font-weight: 0;
   letter-spacing: 2px;
   font-size: 16px;
@@ -148,8 +155,8 @@ body {
   &:hover {
     background-color: #f7f7f7;
     color: #444;
-    transform: translateY(-3px); 
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   }
   &:active {
     transform: translateY(-2px);
@@ -167,9 +174,8 @@ body {
   text-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-
 .nav a::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   bottom: -4px;
@@ -197,5 +203,5 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Manrope', sans-serif !important;
+  font-family: "Manrope", sans-serif !important;
 }
