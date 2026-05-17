@@ -1,16 +1,37 @@
-import {
-  FacebookFilled,
-  GoogleOutlined,
-  LockOutlined,
-  MailOutlined,
-} from "@ant-design/icons";
+import {FacebookFilled, GoogleOutlined ,LockOutlined ,MailOutlined, } from "@ant-design/icons";
 import treelogo from '../../../../../public/pine-tree(1).svg'
-
 import styles from "./LoginPage.module.scss";
-import { Form, Input } from "antd";
-import { NavLink } from "react-router-dom";
+import { Form, Input, notification } from "antd";
+import { NavLink, useNavigate } from "react-router-dom";
+import type { RegisterData, RegisterPayload } from "../../types/type";
+import { loginUser } from "../../services/service";
 
 const LoginPage = () => {
+
+  const [form] = Form.useForm<RegisterData>()
+  const navigate = useNavigate()
+
+  const handleLogin = async ()=> {
+    try {
+      const values = await form.validateFields()
+
+      const payload: RegisterPayload = {
+        email: values.email,
+        password: values.password,
+      }
+      const res = await loginUser(payload)
+      localStorage.setItem('token', res.data.accessToken)
+
+      notification.success({message: "Успешно Вошли в аккаунт"})
+
+      form.resetFields()
+      navigate('/')
+    } catch (e) {
+      console.log(e);
+      notification.error({message: "Неверный email или пароль"})
+    }
+  }
+
   return (
     <div className={styles.authPage}>
       <div className={styles.authCard}>
@@ -37,8 +58,8 @@ const LoginPage = () => {
               <NavLink to={'/register'}><button type="button">Sign up</button></NavLink>
             </div>
 
-            <Form
-              className={styles.authFormWrapper}layout="vertical" onFinish={(values) => {console.log("LOGIN DATA:", values);}}>
+            <Form form={form}
+              className={styles.authFormWrapper}layout="vertical">
               <div className={styles.authTitleWrapper}>
                 <h2>Welcome back</h2>
                 <p>Login to your account to continue.</p>
@@ -60,14 +81,8 @@ const LoginPage = () => {
               </Form.Item>
 
               {/* кнопка забыли пароль? */}
-              <button type="button" className={styles.authForgotButton}>
-                Forgot password?
-              </button>
-
-              <button type="submit" className={styles.authLoginButton}>
-                Sign In
-              </button>
-
+              <button type="button" className={styles.authForgotButton}>Forgot password?</button>
+              <button type="submit" className={styles.authLoginButton} onClick={handleLogin}>Sign In</button>
               <div className={styles.authDivider}>
                 <span />
                 <p>or</p>

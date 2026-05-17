@@ -1,7 +1,29 @@
 {
+  "users": [
+    {
+      "id": "1",
+      "email": "zangar@mail.ru",
+      "password": "131231313"
+    },
+    {
+      "id": "1779014592120",
+      "email": "testtokena@mail.ru",
+      "password": "1234tokenn"
+    },
+    {
+      "id": "1779015265317",
+      "email": "bibibi@mail.ru",
+      "password": "bhdaibejicheiunnna87"
+    },
+    {
+      "id": "1779016093575",
+      "email": "qq12@mail.ru",
+      "password": "11111111"
+    }
+  ],
   "tours": [
     {
-      "id": 1,
+      "id": "1",
       "name": "The Forest Hiker",
       "duration": 5,
       "maxGroupSize": 25,
@@ -12,10 +34,9 @@
       "summary": "Breathtaking hike through the Canadian Banff National Park.",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "image": "/image.png"
-      
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "The Sea Explorer",
       "duration": 7,
       "maxGroupSize": 15,
@@ -28,7 +49,7 @@
       "image": "/nat-6.jpg"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "The Snow Adventurer",
       "duration": 4,
       "maxGroupSize": 10,
@@ -41,7 +62,7 @@
       "image": "/image copy.png"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Desert Explorer",
       "duration": 6,
       "maxGroupSize": 20,
@@ -54,7 +75,7 @@
       "image": "/nat-6.jpg"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "City Lights Tour",
       "duration": 3,
       "maxGroupSize": 30,
@@ -67,7 +88,7 @@
       "image": "/nat-8.jpg"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Island Paradise",
       "duration": 8,
       "maxGroupSize": 12,
@@ -80,7 +101,7 @@
       "image": "/nat-9.jpg"
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Mountain Climber",
       "duration": 6,
       "maxGroupSize": 8,

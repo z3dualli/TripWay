@@ -2,14 +2,17 @@
   "name": "tripway",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "vite",
-    "server": "json-server --watch db.json --port 8080",
+    "server": "node server.js",
     "start": "concurrently \"npm run dev\" \"npm run server\"",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
+  },
+  "overrides": {
+    "path-to-regexp": "0.1.10"
   },
   "dependencies": {
     "@ant-design/icons": "^6.2.2",
@@ -17,7 +20,10 @@
     "antd": "^6.3.7",
     "axios": "^1.13.6",
     "concurrently": "^9.2.1",
-    "json-server": "^1.0.0-beta.14",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "json-server": "^0.17.4",
+    "jsonwebtoken": "^9.0.3",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-redux": "^9.2.0",

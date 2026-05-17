@@ -18,7 +18,7 @@ const MainPage = () => {
     <div className={styles.main}>
       <section className={styles.hero}>
         <div className={styles.heroOverlay}>
-          <img src="public\1256e653-dfd0-43bb-9835-bcd236fc437f.png" alt="" />
+          <img src="/public/1256e653-dfd0-43bb-9835-bcd236fc437f.png" alt="1"/>
           <Row className={styles.heroContent}>
             <Col span={12}>
               <div className={styles.heroText}>

@@ -1,16 +1,53 @@
-import {
-  FacebookFilled,
-  GoogleOutlined,
-  LockOutlined,
-  MailOutlined,
-} from "@ant-design/icons";
+import {FacebookFilled,GoogleOutlined,LockOutlined,MailOutlined} from "@ant-design/icons";
 import treelogo from '../../../../../public/pine-tree(1).svg'
-
 import styles from "./RegisterPage.module.scss";
-import { Form, Input } from "antd";
-import { NavLink } from "react-router-dom";
+import { Form, Input, notification } from "antd";
+import { NavLink, useNavigate } from "react-router-dom";
+import type { RegisterData, RegisterPayload } from "../../types/type";
+import { getUsers, postApp } from "../../services/service";
 
 const RegisterPage = () => {
+
+const [form] = Form.useForm<RegisterData>()
+const navigate = useNavigate()
+
+const handleRegister = async () => {
+  try {
+    const values = await form.validateFields();
+    const response = await getUsers();
+    const users = response.data;
+
+    const userExists = users.some(
+      (user: RegisterPayload) => user.email === values.email
+    );
+
+    if (userExists) {
+      notification.error({
+        message: "Почта уже используется",
+      });
+      return;
+    }
+    const payload: RegisterPayload = {
+      email: values.email,
+      password: values.password,
+    };
+
+    const res = await postApp(payload)
+    localStorage.setItem('token', res.data.accessToken)
+
+    notification.success({
+      message: "Успешно зарегистрированы!",
+    });
+    form.resetFields();
+    navigate('/')
+
+  } catch (e) {
+    console.log(e);
+    notification.error({
+      message: "Ошибка при регистрации",
+    });
+  }
+}
   return (
     <div className={styles.authPage}>
       <div className={styles.authCard}>
@@ -36,8 +73,7 @@ const RegisterPage = () => {
               <NavLink to={'/login'}><button type="button">Sign In</button></NavLink>
             </div>
 
-            <Form
-              className={styles.authFormWrapper}layout="vertical" onFinish={(values) => {console.log("LOGIN DATA:", values);}}>
+            <Form form={form} className={styles.authFormWrapper}layout="vertical">
               <div className={styles.authTitleWrapper}>
                 <h2>Sign Up</h2>
                 <p>Register your account to continue.</p>
@@ -58,17 +94,22 @@ const RegisterPage = () => {
                 />
               </Form.Item>
               {/* проверка пароля */}
-              <Form.Item label="Confirm Password" name="confirmpassword" rules={[{required: true, message: "Confirm Password is required",},{min: 8, message: "Minimum 8 symbols",},]}>
-                <Input.Password
-                  prefix={<LockOutlined />}
-                  placeholder="Confirm your password"
-                />
+              <Form.Item label="Confirm Password" name="confirmpassword" dependencies={["password"]} rules={[{required: true, message: "Confirm your Password",},
+              ({getFieldValue})=> ({
+                validator(_, value) {
+                  if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve()
+                  }
+                  return Promise.reject(
+                    new Error('Password dont match')
+                  );
+                },
+              }),
+            ]}>
+                <Input.Password prefix={<LockOutlined />} placeholder="Confirm your password"/>
               </Form.Item>
 
-              <button type="submit" className={styles.authLoginButton}>
-                Sign Up
-              </button>
-
+              <button type="button" className={styles.authLoginButton} onClick={handleRegister}>Sign Up</button>
               <div className={styles.authDivider}>
                 <span />
                 <p>or</p>

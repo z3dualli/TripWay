@@ -1,0 +1,218 @@
+.alltours {
+  width: 100%;
+  min-height: 260vh;
+  background-color: #e7e7e7;
+}
+
+.tours {
+  width: 100%;
+  height: 120vh;
+  background-color: #e7e7e7;
+  padding: 10px 10px 100px;
+}
+
+.card {
+  perspective: 1500px;
+  height: 500px;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.cardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+}
+
+.card:hover .cardInner {
+  transform: rotateY(180deg);
+}
+
+.cardFront, .cardBack {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.cardFront {
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.imgWrapper {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0%, 100% 85%, 0% 100%);
+}
+.imgWrapper .cardImg {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+
+.cardContent {
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.cardContent .cardTitle {
+  font-size: 24px;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.cardContent .cardText {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.4;
+  text-align: center;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.cardContent .cardText:last-child {
+  border-bottom: none;
+}
+
+.cardBack {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, #7ed56f, #28b485);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+.cardBack .cardOnly {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  opacity: 0.85;
+  text-transform: uppercase;
+}
+.cardBack .cardPrice {
+  font-size: 64px;
+  font-weight: 300;
+  line-height: 1;
+}
+.cardBack .cardBtn {
+  margin-top: 8px;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 100px;
+  background: white;
+  color: #666;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.cardBack .cardBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+}
+.cardBack .cardBtn:active {
+  transform: translateY(-1px);
+}
+
+.toursTitleWrapper {
+  text-align: center;
+}
+
+.toursTitle {
+  padding-top: 14px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: inline-block;
+  font-size: 36px;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  background: linear-gradient(to right, #7ed56f, #28b485);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin: 80px 0;
+  transition: 0.1s ease;
+}
+.toursTitle:hover {
+  text-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transform: skewY(2deg) skewX(15deg) scale(1.1);
+}
+
+.plusBtn {
+  all: unset;
+}
+.plusBtn img {
+  width: 50px;
+}
+
+.modal {
+  align-items: center;
+}
+.modal img {
+  width: 100%;
+  height: 260px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 6px;
+}
+
+h2 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.meta {
+  font-size: 14px;
+  color: #8c8c8c;
+  margin-bottom: 10px;
+}
+
+.summary {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.priceBlock {
+  background: #f5f5f5;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+}
+.priceBlock span {
+  font-size: 12px;
+  color: #888;
+}
+.priceBlock h3 {
+  margin: 5px 0 0;
+  color: #28b485;
+  font-size: 20px;
+}
+
+.btn {
+  width: 100%;
+  height: 40px;
+  border: none;
+  background: #28b485;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn:hover {
+  background: rgba(40, 180, 133, 0.6666666667);
+}/*# sourceMappingURL=AllTours.module.css.map */
