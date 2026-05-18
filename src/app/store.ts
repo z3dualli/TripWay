@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import cartReducer from '../pages/Cart/model/cartSlice'
+import authReducer from '../pages/Auth/model/AuthSlice'
 
 const loadCart = () => {
   try{
@@ -13,7 +14,8 @@ export default loadCart;
 
 export const store = configureStore({
   reducer: {
-    cart: cartReducer
+    cart: cartReducer, 
+    auth: authReducer
   },
   preloadedState: {
     cart: loadCart()

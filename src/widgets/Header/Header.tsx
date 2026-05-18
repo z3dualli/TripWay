@@ -2,10 +2,13 @@ import { Col, Row } from "antd";
 import styles from "./Header.module.scss";
 import { NavLink } from "react-router-dom";
 import cartIcon from "../../assets/icons/cart-alt.svg";
-import likeIcon from "../../assets/icons/heart.svg";
-import { useAppSelector } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { logout } from "../../pages/Auth/model/AuthSlice";
 
 const Header = () => {
+
+  const dispatch = useAppDispatch()
+  const { email, isAuth } = useAppSelector((state) => state.auth);
   const cart = useAppSelector((state) => state.cart);
   const totalTour = cart.reduce((acc, item) => {
     return acc + item.quantity;
@@ -63,10 +66,23 @@ const Header = () => {
               )}
             </button>
           </NavLink>
-
-          <NavLink to={"/login"}>
-            <button className={styles.loginBut}>Sign In</button>
-          </NavLink>
+          {isAuth ? (
+            <div className={styles.userBlock}>
+              <span className={styles.userAcc}>{email}</span>
+              <button
+                className={styles.logoutBut}
+                onClick={() => {dispatch(logout())
+                localStorage.removeItem('token')
+                }}
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <NavLink to={"/login"}>
+              <button className={styles.loginBut}>Sign In</button>
+            </NavLink>
+          )}
         </div>
       </Col>
     </Row>

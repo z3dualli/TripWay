@@ -30,6 +30,10 @@ const Cart = () => {
     return acc + Number(item.price) * item.quantity;
   }, 0);
 
+  const handleBuy = ()=> {
+    
+  }
+
   return (
     <section className={styles.Cart}>
       <div className={styles.top}>

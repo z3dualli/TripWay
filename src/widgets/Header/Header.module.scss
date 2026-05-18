@@ -205,3 +205,30 @@ body {
   justify-content: center;
   font-family: "Manrope", sans-serif !important;
 }
+
+.userBlock {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logoutBut {
+  font-size: 14px;
+  letter-spacing: 2px;
+  border-radius: 100px;
+  height: 45px;
+  width: 115px;
+  padding: 6px 14px;
+  color: #f7f7f7;
+  border: 1px solid #f7f7f7;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: #f7f7f7;
+    color: #444;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+}

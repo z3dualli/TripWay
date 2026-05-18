@@ -5,11 +5,14 @@ import { Form, Input, notification } from "antd";
 import { NavLink, useNavigate } from "react-router-dom";
 import type { RegisterData, RegisterPayload } from "../../types/type";
 import { loginUser } from "../../services/service";
+import { setUser } from "../../model/AuthSlice";
+import { useAppDispatch } from "../../../../app/hooks";
 
 const LoginPage = () => {
 
   const [form] = Form.useForm<RegisterData>()
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
 
   const handleLogin = async ()=> {
     try {
@@ -21,6 +24,7 @@ const LoginPage = () => {
       }
       const res = await loginUser(payload)
       localStorage.setItem('token', res.data.accessToken)
+      dispatch(setUser({ email: values.email}))
 
       notification.success({message: "Успешно Вошли в аккаунт"})
 
