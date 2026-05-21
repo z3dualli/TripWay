@@ -72,7 +72,7 @@ const Header = () => {
               <button
                 className={styles.logoutBut}
                 onClick={() => {dispatch(logout())
-                localStorage.removeItem('token')
+
                 }}
               >
                 Logout

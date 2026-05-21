@@ -18,7 +18,297 @@
     {
       "id": "1779016093575",
       "email": "qq12@mail.ru",
-      "password": "11111111"
+      "password": "11111111",
+      "purchases": [
+        {
+          "date": "2026-05-21T10:58:26.841Z",
+          "tours": [
+            {
+              "id": "2",
+              "name": "The Sea Explorer",
+              "duration": 7,
+              "maxGroupSize": 15,
+              "difficulty": "medium",
+              "ratingsAverage": 4.8,
+              "ratingsQuantity": 55,
+              "price": 799,
+              "summary": "Explore the stunning beaches and marine life.",
+              "description": "Lorem ipsum dolor sit amet.",
+              "image": "/nat-6.jpg",
+              "quantity": 3
+            },
+            {
+              "id": "7",
+              "name": "Mountain Climber",
+              "duration": 6,
+              "maxGroupSize": 8,
+              "difficulty": "difficult",
+              "ratingsAverage": 4.7,
+              "ratingsQuantity": 33,
+              "price": 1100,
+              "summary": "Challenging mountain climbing expedition.",
+              "description": "Lorem ipsum dolor sit amet.",
+              "image": "/nat-10.jpg",
+              "quantity": 1
+            }
+          ],
+          "total": 3497
+        },
+        {
+          "date": "2026-05-21T10:59:00.883Z",
+          "tours": [
+            {
+              "id": "2",
+              "name": "The Sea Explorer",
+              "duration": 7,
+              "maxGroupSize": 15,
+              "difficulty": "medium",
+              "ratingsAverage": 4.8,
+              "ratingsQuantity": 55,
+              "price": 799,
+              "summary": "Explore the stunning beaches and marine life.",
+              "description": "Lorem ipsum dolor sit amet.",
+              "image": "/nat-6.jpg",
+              "quantity": 1
+            }
+          ],
+          "total": 799
+        },
+        {
+          "date": "2026-05-21T11:13:54.564Z",
+          "tours": [
+            {
+              "id": "2",
+              "name": "The Sea Explorer",
+              "duration": 7,
+              "maxGroupSize": 15,
+              "difficulty": "medium",
+              "ratingsAverage": 4.8,
+              "ratingsQuantity": 55,
+              "price": 799,
+              "summary": "Explore the stunning beaches and marine life.",
+              "description": "Lorem ipsum dolor sit amet.",
+              "image": "/nat-6.jpg",
+              "quantity": 1
+            }
+          ],
+          "total": 799
+        },
+        {
+          "date": "2026-05-21T12:14:28.133Z",
+          "tours": [
+            {
+              "id": "3",
+              "name": "The Snow Adventurer",
+              "duration": 4,
+              "maxGroupSize": 10,
+              "difficulty": "hard",
+              "ratingsAverage": 4.6,
+              "ratingsQuantity": 22,
+              "price": 899,
+              "summary": "Experience extreme winter adventures in the Alps.",
+              "description": "Lorem ipsum dolor sit amet.",
+              "image": "/image copy.png",
+              "quantity": 1
+            }
+          ],
+          "total": 899
+        }
+      ]
+    },
+    {
+      "id": "1779129130300",
+      "email": "adada@mail.ru",
+      "password": "adadadadada233"
+    },
+    {
+      "id": "1779361371000",
+      "email": "sdsds@mail.ru",
+      "password": "dadadad333",
+      "purchases": [
+        {
+          "date": "2026-05-21T11:04:18.503Z",
+          "tours": [
+            {
+              "id": "2",
+              "name": "The Sea Explorer",
+              "duration": 7,
+              "maxGroupSize": 15,
+              "difficulty": "medium",
+              "ratingsAverage": 4.8,
+              "ratingsQuantity": 55,
+              "price": 799,
+              "summary": "Explore the stunning beaches and marine life.",
+              "description": "Lorem ipsum dolor sit amet.",
+              "image": "/nat-6.jpg",
+              "quantity": 3
+            },
+            {
+              "id": "3",
+              "name": "The Snow Adventurer",
+              "duration": 4,
+              "maxGroupSize": 10,
+              "difficulty": "hard",
+              "ratingsAverage": 4.6,
+              "ratingsQuantity": 22,
+              "price": 899,
+              "summary": "Experience extreme winter adventures in the Alps.",
+              "description": "Lorem ipsum dolor sit amet.",
+              "image": "/image copy.png",
+              "quantity": 1
+            }
+          ],
+          "total": 3296
+        },
+        {
+          "date": "2026-05-21T11:06:11.149Z",
+          "tours": [
+            {
+              "id": "2",
+              "name": "The Sea Explorer",
+              "duration": 7,
+              "maxGroupSize": 15,
+              "difficulty": "medium",
+              "ratingsAverage": 4.8,
+              "ratingsQuantity": 55,
+              "price": 799,
+              "summary": "Explore the stunning beaches and marine life.",
+              "description": "Lorem ipsum dolor sit amet.",
+              "image": "/nat-6.jpg",
+              "quantity": 1
+            }
+          ],
+          "total": 799
+        },
+        {
+          "date": "2026-05-21T11:07:33.854Z",
+          "tours": [
+            {
+              "id": "2",
+              "name": "The Sea Explorer",
+              "duration": 7,
+              "maxGroupSize": 15,
+              "difficulty": "medium",
+              "ratingsAverage": 4.8,
+              "ratingsQuantity": 55,
+              "price": 799,
+              "summary": "Explore the stunning beaches and marine life.",
+              "description": "Lorem ipsum dolor sit amet.",
+              "image": "/nat-6.jpg",
+              "quantity": 1
+            }
+          ],
+          "total": 799
+        },
+        {
+          "date": "2026-05-21T11:09:23.926Z",
+          "tours": [
+            {
+              "id": "2",
+              "name": "The Sea Explorer",
+              "duration": 7,
+              "maxGroupSize": 15,
+              "difficulty": "medium",
+              "ratingsAverage": 4.8,
+              "ratingsQuantity": 55,
+              "price": 799,
+              "summary": "Explore the stunning beaches and marine life.",
+              "description": "Lorem ipsum dolor sit amet.",
+              "image": "/nat-6.jpg",
+              "quantity": 6
+            }
+          ],
+          "total": 4794
+        },
+        {
+          "date": "2026-05-21T11:10:09.891Z",
+          "tours": [
+            {
+              "id": "2",
+              "name": "The Sea Explorer",
+              "duration": 7,
+              "maxGroupSize": 15,
+              "difficulty": "medium",
+              "ratingsAverage": 4.8,
+              "ratingsQuantity": 55,
+              "price": 799,
+              "summary": "Explore the stunning beaches and marine life.",
+              "description": "Lorem ipsum dolor sit amet.",
+              "image": "/nat-6.jpg",
+              "quantity": 1
+            },
+            {
+              "id": "3",
+              "name": "The Snow Adventurer",
+              "duration": 4,
+              "maxGroupSize": 10,
+              "difficulty": "hard",
+              "ratingsAverage": 4.6,
+              "ratingsQuantity": 22,
+              "price": 899,
+              "summary": "Experience extreme winter adventures in the Alps.",
+              "description": "Lorem ipsum dolor sit amet.",
+              "image": "/image copy.png",
+              "quantity": 1
+            }
+          ],
+          "total": 1698
+        },
+        {
+          "date": "2026-05-21T11:11:39.407Z",
+          "tours": [
+            {
+              "id": "3",
+              "name": "The Snow Adventurer",
+              "duration": 4,
+              "maxGroupSize": 10,
+              "difficulty": "hard",
+              "ratingsAverage": 4.6,
+              "ratingsQuantity": 22,
+              "price": 899,
+              "summary": "Experience extreme winter adventures in the Alps.",
+              "description": "Lorem ipsum dolor sit amet.",
+              "image": "/image copy.png",
+              "quantity": 1
+            },
+            {
+              "id": "1",
+              "name": "The Forest Hiker",
+              "duration": 5,
+              "maxGroupSize": 25,
+              "difficulty": "easy",
+              "ratingsAverage": 4.7,
+              "ratingsQuantity": 37,
+              "price": 497,
+              "summary": "Breathtaking hike through the Canadian Banff National Park.",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+              "image": "/image.png",
+              "quantity": 1
+            }
+          ],
+          "total": 1396
+        },
+        {
+          "date": "2026-05-21T11:12:42.754Z",
+          "tours": [
+            {
+              "id": "2",
+              "name": "The Sea Explorer",
+              "duration": 7,
+              "maxGroupSize": 15,
+              "difficulty": "medium",
+              "ratingsAverage": 4.8,
+              "ratingsQuantity": 55,
+              "price": 799,
+              "summary": "Explore the stunning beaches and marine life.",
+              "description": "Lorem ipsum dolor sit amet.",
+              "image": "/nat-6.jpg",
+              "quantity": 1
+            }
+          ],
+          "total": 799
+        }
+      ]
     }
   ],
   "tours": [

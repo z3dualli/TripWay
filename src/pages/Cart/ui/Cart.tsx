@@ -1,14 +1,48 @@
-import { Col, Row } from "antd";
+import { Col, message, notification, Row } from "antd";
 import styles from "./Cart.module.scss";
 import DeliveryIcon from "../../../assets/icons/delivery.svg";
 import pointerIcon from "../../../assets/icons/dot-arrow-left.svg";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { decrement, increment, removeFromCart } from "../model/cartSlice";
-import { NavLink } from "react-router-dom";
+import {clearCart,decrement,increment,removeFromCart,} from "../model/cartSlice";
+import { NavLink, useNavigate } from "react-router-dom";
+import { getUserById, patchUser } from "../service/service";
+import type { Purchase } from "../types/type";
 
 const Cart = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const cart = useAppSelector((state) => state.cart);
   const isEmpty = cart.length === 0;
+  const subTotal = cart.reduce((acc, item) => {
+    return acc + Number(item.price) * item.quantity;
+  }, 0);
+
+  const handleBuy = async () => {
+    const token = localStorage.getItem("token");
+    console.log("token:", token);
+    console.log("userId:", localStorage.getItem("userId"));
+    if (!token) {
+      navigate("/login");
+      notification.info({ message: "Войдите в аккаунт!" });
+      return;
+    }
+    const userId = localStorage.getItem("userId");
+    const userRes = await getUserById(userId!);
+    const currentPurchases: Purchase[] = userRes.data.purchases || [];
+
+    const newPurchase: Purchase = {
+      date: new Date().toISOString(),
+      tours: cart,
+      total: subTotal,
+    };
+
+    await patchUser(userId!, {
+      purchases: [...currentPurchases, newPurchase],
+    });
+
+    dispatch(clearCart());
+    notification.success({ message: "Успешная покупка" });
+  };
 
   if (isEmpty) {
     return (
@@ -22,16 +56,6 @@ const Cart = () => {
         </div>
       </section>
     );
-  }
-
-  const dispatch = useAppDispatch();
-
-  const subTotal = cart.reduce((acc, item) => {
-    return acc + Number(item.price) * item.quantity;
-  }, 0);
-
-  const handleBuy = ()=> {
-    
   }
 
   return (
@@ -115,7 +139,9 @@ const Cart = () => {
               />
             </div>
 
-            <button className={styles.Buybtn}>Check Out</button>
+            <button className={styles.Buybtn} onClick={handleBuy}>
+              Check Out
+            </button>
 
             <div className={styles.payment}>
               <p>We Accept</p>

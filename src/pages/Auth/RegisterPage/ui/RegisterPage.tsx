@@ -41,6 +41,7 @@ const RegisterPage = () => {
 
       const res = await postApp(payload);
       localStorage.setItem("token", res.data.accessToken);
+      localStorage.setItem("userId", res.data.user.id)
       dispatch(
         setUser({
           email: values.email,

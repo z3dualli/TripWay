@@ -51,6 +51,10 @@ const cartSlice = createSlice({
       saveCart(newState)
       return newState
     },
+    clearCart: ()=> {
+      localStorage.removeItem('cart')
+      return []
+    }
   }
 })
 
@@ -58,7 +62,8 @@ export const {
   addToCart,
   increment, 
   decrement, 
-  removeFromCart, 
+  removeFromCart,
+  clearCart 
 } = cartSlice.actions
 
 export default cartSlice.reducer

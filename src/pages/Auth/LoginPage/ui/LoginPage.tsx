@@ -23,7 +23,10 @@ const LoginPage = () => {
         password: values.password,
       }
       const res = await loginUser(payload)
+      // console.log(res.data);
+      
       localStorage.setItem('token', res.data.accessToken)
+      localStorage.setItem('userId',res.data.user.id)
       dispatch(setUser({ email: values.email}))
 
       notification.success({message: "Успешно Вошли в аккаунт"})
