@@ -7,6 +7,8 @@ import { Cart } from './pages/Cart'
 import { Provider } from 'react-redux'
 import { store } from './app/store'
 import { LoginPage, RegisterPage } from './pages/Auth'
+import { Admin } from './pages/Admin'
+import PrivateRoute from './shared/PrivateRoute/PrivateRoute'
 
 
 function App() {
@@ -15,6 +17,11 @@ function App() {
       <BrowserRouter>
         <Header/>
         <Routes>
+          <Route element={
+            <PrivateRoute>
+              <Admin/>
+            </PrivateRoute>
+          } path='/admin'/>
           <Route element={<RegisterPage/>} path='/register'/>
           <Route element={<LoginPage/>} path='/login'/>
           <Route element={<MainPage/>} path='/'/>

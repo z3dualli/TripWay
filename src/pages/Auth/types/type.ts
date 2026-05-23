@@ -12,4 +12,5 @@ export interface RegisterPayload {
 export interface authState {
   email: string | null
   isAuth: boolean
+  role: string | null
 }

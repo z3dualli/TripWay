@@ -1,5 +1,10 @@
-import {FacebookFilled, GoogleOutlined ,LockOutlined ,MailOutlined, } from "@ant-design/icons";
-import treelogo from '../../../../../public/pine-tree(1).svg'
+import {
+  FacebookFilled,
+  GoogleOutlined,
+  LockOutlined,
+  MailOutlined,
+} from "@ant-design/icons";
+import treelogo from "../../../../../public/pine-tree(1).svg";
 import styles from "./LoginPage.module.scss";
 import { Form, Input, notification } from "antd";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -9,35 +14,42 @@ import { setUser } from "../../model/AuthSlice";
 import { useAppDispatch } from "../../../../app/hooks";
 
 const LoginPage = () => {
+  const [form] = Form.useForm<RegisterData>();
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
-  const [form] = Form.useForm<RegisterData>()
-  const navigate = useNavigate()
-  const dispatch = useAppDispatch()
-
-  const handleLogin = async ()=> {
+  const handleLogin = async () => {
     try {
-      const values = await form.validateFields()
+      const values = await form.validateFields();
 
       const payload: RegisterPayload = {
         email: values.email,
         password: values.password,
-      }
-      const res = await loginUser(payload)
-      // console.log(res.data);
-      
-      localStorage.setItem('token', res.data.accessToken)
-      localStorage.setItem('userId',res.data.user.id)
-      dispatch(setUser({ email: values.email}))
+      };
+      const res = await loginUser(payload);
+      localStorage.clear()
+      console.log(res.data);
+      // сохрагняем в сторейдж 
+      localStorage.setItem("token", res.data.accessToken);
+      localStorage.setItem("userId", res.data.user.id);
+      localStorage.setItem("role", res.data.user.role);
+      dispatch(
+        setUser({
+          role: res.data.user.role,
+          email: values.email,
+        }),
+      );
+      notification.success({ message: "Успешно Вошли в аккаунт" });
+      form.resetFields();
 
-      notification.success({message: "Успешно Вошли в аккаунт"})
+      //проверка на то что юзер админ
+      navigate(res.data.user.role === "admin" ? '/admin' : '/')
 
-      form.resetFields()
-      navigate('/')
     } catch (e) {
       console.log(e);
-      notification.error({message: "Неверный email или пароль"})
+      notification.error({ message: "Неверный email или пароль" });
     }
-  }
+  };
 
   return (
     <div className={styles.authPage}>
@@ -45,34 +57,54 @@ const LoginPage = () => {
         <div className={styles.authRow}>
           <div className={styles.authLeft}>
             <div className={styles.authOverlay} />
-            <img src="/nat-4.jpg" alt="" className={styles.authimg}/>
+            <img src="/nat-4.jpg" alt="" className={styles.authimg} />
             <div className={styles.authLogoWrapper}>
-              <img src={treelogo} alt="" className={styles.treelogo}/>
+              <img src={treelogo} alt="" className={styles.treelogo} />
               <div className={styles.authLogoText}>
                 <span>TRIPWAY</span>
                 <span>TOURS</span>
               </div>
             </div>
             <div className={styles.authLeftContent}>
-              <h1>Explore <br /> the world</h1>
-              <p>Discover amazing places<br />and unforgettable experiences<br />with our nature tours.</p>
+              <h1>
+                Explore <br /> the world
+              </h1>
+              <p>
+                Discover amazing places
+                <br />
+                and unforgettable experiences
+                <br />
+                with our nature tours.
+              </p>
             </div>
           </div>
           <div className={styles.authRight}>
             {/* нету аккаунта? */}
             <div className={styles.authTopText}>
               <span>Don't have an account?</span>
-              <NavLink to={'/register'}><button type="button">Sign up</button></NavLink>
+              <NavLink to={"/register"}>
+                <button type="button">Sign up</button>
+              </NavLink>
             </div>
 
-            <Form form={form}
-              className={styles.authFormWrapper}layout="vertical">
+            <Form
+              form={form}
+              className={styles.authFormWrapper}
+              layout="vertical"
+            >
               <div className={styles.authTitleWrapper}>
                 <h2>Welcome back</h2>
                 <p>Login to your account to continue.</p>
               </div>
               {/* поле почты*/}
-              <Form.Item label="Email"name="email" rules={[{required: true, message: "Email is required",},{type: "email", message: "Enter valid email",},]}>
+              <Form.Item
+                label="Email"
+                name="email"
+                rules={[
+                  { required: true, message: "Email is required" },
+                  { type: "email", message: "Enter valid email" },
+                ]}
+              >
                 <Input
                   prefix={<MailOutlined />}
                   placeholder="Enter your email"
@@ -80,7 +112,14 @@ const LoginPage = () => {
               </Form.Item>
 
               {/* поле пароля */}
-              <Form.Item label="Password" name="password" rules={[{required: true, message: "Password is required",},{min: 8, message: "Minimum 8 symbols",},]}>
+              <Form.Item
+                label="Password"
+                name="password"
+                rules={[
+                  { required: true, message: "Password is required" },
+                  { min: 8, message: "Minimum 8 symbols" },
+                ]}
+              >
                 <Input.Password
                   prefix={<LockOutlined />}
                   placeholder="Enter your password"
@@ -88,8 +127,16 @@ const LoginPage = () => {
               </Form.Item>
 
               {/* кнопка забыли пароль? */}
-              <button type="button" className={styles.authForgotButton}>Forgot password?</button>
-              <button type="submit" className={styles.authLoginButton} onClick={handleLogin}>Sign In</button>
+              <button type="button" className={styles.authForgotButton}>
+                Forgot password?
+              </button>
+              <button
+                type="submit"
+                className={styles.authLoginButton}
+                onClick={handleLogin}
+              >
+                Sign In
+              </button>
               <div className={styles.authDivider}>
                 <span />
                 <p>or</p>
@@ -97,14 +144,12 @@ const LoginPage = () => {
               </div>
 
               <div className={styles.authSocials}>
-                <button type="button" className={styles.authSocialButton}
-                >
+                <button type="button" className={styles.authSocialButton}>
                   <GoogleOutlined />
                   Continue with Google
                 </button>
 
-                <button type="button" className={styles.authSocialButton}
-                >
+                <button type="button" className={styles.authSocialButton}>
                   <FacebookFilled />
                   Continue with Facebook
                 </button>

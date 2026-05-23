@@ -19,8 +19,7 @@ const Cart = () => {
 
   const handleBuy = async () => {
     const token = localStorage.getItem("token");
-    console.log("token:", token);
-    console.log("userId:", localStorage.getItem("userId"));
+
     if (!token) {
       navigate("/login");
       notification.info({ message: "Войдите в аккаунт!" });
