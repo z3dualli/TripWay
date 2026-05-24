@@ -1,4 +1,4 @@
-import { Col, Modal, Row, Spin } from "antd";
+import { Col, Modal, Row,} from "antd";
 import styles from "./AllTours.module.scss";
 import { useEffect, useState } from "react";
 import type { AlltourType } from "../types/type";
@@ -10,22 +10,12 @@ const AllTours = () => {
   const [open, setOpen] = useState(false);
   const [selectedTour, setSelectedTour] = useState<AlltourType | null>(null);
 
-  const [isloading, setIsloading] = useState(false);
-
   useEffect(() => {
     getData();
   }, []);
 
-  const getData = async () => {
-    try {
-      setIsloading(true);
-      const res = await getAlltours();
-      setAlltours(res.data);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setIsloading(false);
-    }
+  const getData = () => {
+    getAlltours().then((res) => setAlltours(res.data));
   };
 
   const handleOpenModal = (tour: AlltourType) => {
@@ -48,44 +38,41 @@ const AllTours = () => {
   };
 
   const renderTourCard = (tour: AlltourType) => {
-    return isloading ? (
-      <Spin />
-    ) : (
-      <Col span={7} key={tour.id} className={styles.cards}>
-        <div className={styles.card}>
-          <div className={styles.cardInner}>
-            <div className={styles.cardFront}>
-              <div className={styles.imgWrapper}>
-                <img
-                  src={tour.image}
-                  alt={tour.name}
-                  className={styles.cardImg}
-                />
-              </div>
-
-              <div className={styles.cardContent}>
-                <h3 className={styles.cardTitle}>{tour.name}</h3>
-                <p className={styles.cardText}>{tour.duration} day tours</p>
-                <p className={styles.cardText}>Difficulty: {tour.difficulty}</p>
-                <p className={styles.cardText}>{tour.summary}</p>
-              </div>
+    return(
+    <Col span={7} key={tour.id} className={styles.cards}>
+      <div className={styles.card}>
+        <div className={styles.cardInner}>
+          <div className={styles.cardFront}>
+            <div className={styles.imgWrapper}>
+              <img
+                src={tour.image}
+                alt={tour.name}
+                className={styles.cardImg}
+              />
             </div>
 
-            <div className={styles.cardBack}>
-              <p className={styles.cardOnly}>ONLY</p>
-              <h2 className={styles.cardPrice}>${tour.price}</h2>
-
-              <button
-                className={styles.cardBtn}
-                onClick={() => handleOpenModal(tour)}
-              >
-                BOOK TOUR
-              </button>
+            <div className={styles.cardContent}>
+              <h3 className={styles.cardTitle}>{tour.name}</h3>
+              <p className={styles.cardText}>{tour.duration} day tours</p>
+              <p className={styles.cardText}>Difficulty: {tour.difficulty}</p>
+              <p className={styles.cardText}>{tour.summary}</p>
             </div>
           </div>
+
+          <div className={styles.cardBack}>
+            <p className={styles.cardOnly}>ONLY</p>
+            <h2 className={styles.cardPrice}>${tour.price}</h2>
+
+            <button
+              className={styles.cardBtn}
+              onClick={() => handleOpenModal(tour)}
+            >
+              BOOK TOUR
+            </button>
+          </div>
         </div>
-      </Col>
-    );
+      </div>
+    </Col>);
   };
 
   const modalContent = selectedTour ? (
