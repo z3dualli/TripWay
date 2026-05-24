@@ -65,6 +65,26 @@
             }
           ],
           "total": 399
+        },
+        {
+          "date": "2026-05-24T16:43:16.074Z",
+          "tours": [
+            {
+              "id": "3",
+              "name": "The Snow Adventurer",
+              "duration": 4,
+              "maxGroupSize": 10,
+              "difficulty": "hard",
+              "ratingsAverage": 4.6,
+              "ratingsQuantity": 22,
+              "price": 899,
+              "summary": "Experience extreme winter adventures in the Alps.",
+              "description": "Lorem ipsum dolor sit amet.",
+              "image": "/image copy.png",
+              "quantity": 2
+            }
+          ],
+          "total": 1798
         }
       ]
     },
