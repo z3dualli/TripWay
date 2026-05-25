@@ -6,8 +6,9 @@ import {
 } from "@ant-design/icons";
 import treelogo from "../../../../../public/pine-tree(1).svg";
 import styles from "./RegisterPage.module.scss";
-import { Form, Input, notification } from "antd";
+import { Col, Form, Input, notification, Row } from "antd";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import type { RegisterData, RegisterPayload } from "../../types/type";
 import { getUsers, postApp } from "../../services/service";
 import { useAppDispatch } from "../../../../app/hooks";
@@ -15,56 +16,51 @@ import { setUser } from "../../model/AuthSlice";
 
 const RegisterPage = () => {
   const [form] = Form.useForm<RegisterData>();
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const handleRegister = async () => {
-    try {
-      const values = await form.validateFields();
-      const response = await getUsers();
-      const users = response.data;
+  const handleRegister = () => {
+    form.validateFields().then((values) => {
+        setLoading(true);
+        return getUsers().then(({ data: users }) => {
+          const userExists = users.some(
+            (user: RegisterPayload) => user.email === values.email,
+          );
 
-      const userExists = users.some(
-        (user: RegisterPayload) => user.email === values.email,
-      );
+          if (userExists) {
+            notification.error({ message: "Почта уже используется" });
+            setLoading(false);
+            return;
+          }
 
-      if (userExists) {
-        notification.error({
-          message: "Почта уже используется",
+          const payload: RegisterPayload = {
+            email: values.email,
+            password: values.password,
+          };
+
+          return postApp(payload).then(({ data }) => {
+            localStorage.setItem("token", data.accessToken);
+            localStorage.setItem("userId", String(data.user.id));
+            dispatch(setUser({ email: values.email, role: data.user.role }));
+            notification.success({ message: "Успешно зарегистрированы!" });
+            form.resetFields();
+            navigate("/");
+          });
         });
-        return;
-      }
-      const payload: RegisterPayload = {
-        email: values.email,
-        password: values.password,
-      };
-
-      const res = await postApp(payload);
-      localStorage.setItem("token", res.data.accessToken);
-      localStorage.setItem("userId", res.data.user.id)
-      dispatch(
-        setUser({
-          email: values.email,
-        }),
-      );
-
-      notification.success({
-        message: "Успешно зарегистрированы!",
-      });
-      form.resetFields();
-      navigate("/");
-    } catch (e) {
-      console.log(e);
-      notification.error({
-        message: "Ошибка при регистрации",
-      });
-    }
+      })
+      .catch((e) => {
+        if (e?.errorFields) return;
+        notification.error({ message: "Ошибка при регистрации" });
+      })
+      .finally(() => setLoading(false));
   };
+
   return (
     <div className={styles.authPage}>
       <div className={styles.authCard}>
-        <div className={styles.authRow}>
-          <div className={styles.authLeft}>
+        <Row>
+          <Col xs={0} md={13} className={styles.authLeft}>
             <div className={styles.authOverlay} />
             <img src="/nat-4.jpg" alt="" className={styles.authimg} />
             <div className={styles.authLogoWrapper}>
@@ -86,8 +82,8 @@ const RegisterPage = () => {
                 with our nature tours.
               </p>
             </div>
-          </div>
-          <div className={styles.authRight}>
+          </Col>
+          <Col xs={24} md={11} className={styles.authRight}>
             <div className={styles.authTopText}>
               <span>Already have an account?</span>
               <NavLink to={"/login"}>
@@ -104,7 +100,7 @@ const RegisterPage = () => {
                 <h2>Sign Up</h2>
                 <p>Register your account to continue.</p>
               </div>
-              {/* поле почты*/}
+
               <Form.Item
                 label="Email"
                 name="email"
@@ -119,7 +115,6 @@ const RegisterPage = () => {
                 />
               </Form.Item>
 
-              {/* поле пароля */}
               <Form.Item
                 label="Password"
                 name="password"
@@ -133,7 +128,7 @@ const RegisterPage = () => {
                   placeholder="Enter your password"
                 />
               </Form.Item>
-              {/* проверка пароля */}
+
               <Form.Item
                 label="Confirm Password"
                 name="confirmpassword"
@@ -160,9 +155,11 @@ const RegisterPage = () => {
                 type="button"
                 className={styles.authLoginButton}
                 onClick={handleRegister}
+                disabled={loading}
               >
-                Sign Up
+                {loading ? "Loading..." : "Sign Up"}
               </button>
+
               <div className={styles.authDivider}>
                 <span />
                 <p>or</p>
@@ -181,8 +178,8 @@ const RegisterPage = () => {
                 </button>
               </div>
             </Form>
-          </div>
-        </div>
+          </Col>
+        </Row>
       </div>
     </div>
   );

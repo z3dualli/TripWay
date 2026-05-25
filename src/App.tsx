@@ -9,6 +9,7 @@ import { store } from './app/store'
 import { LoginPage, RegisterPage } from './pages/Auth'
 import { Admin } from './pages/Admin'
 import PrivateRoute from './shared/PrivateRoute/PrivateRoute'
+import Footer from './widgets/Footer/Footer'
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route element={<AllTours/>} path='/alltours'/>
           <Route element={<Cart/>} path='/cart'/>
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </Provider>
   )

@@ -4,18 +4,24 @@ import DeliveryIcon from "../../../assets/icons/delivery.svg";
 import pointerIcon from "../../../assets/icons/dot-arrow-left.svg";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import {clearCart,decrement,increment,removeFromCart,} from "../model/cartSlice";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { getUserById, patchUser } from "../service/service";
 import type { Purchase } from "../types/type";
+import { useEffect } from "react";
 
 const Cart = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const {pathname} = useLocation()
   const cart = useAppSelector((state) => state.cart);
   const isEmpty = cart.length === 0;
   const subTotal = cart.reduce((acc, item) => {
     return acc + Number(item.price) * item.quantity;
   }, 0);
+
+  useEffect(()=> {
+    window.scrollTo(0, 0)
+  }, [pathname])
 
   const handleBuy = async () => {
     const token = localStorage.getItem("token");
